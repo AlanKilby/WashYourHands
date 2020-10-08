@@ -18,8 +18,14 @@ public class WashHands : MonoBehaviour
     private bool movedUpper;
     private bool movedLower;
 
+    private float initialUpper;
+    private float initialLower;
+
     void Start()
     {
+        initialUpper = upperHand.transform.position.y;
+        initialLower = lowerHand.transform.position.y;
+
         movedUpper = false;
         movedLower = false;
 
@@ -51,23 +57,23 @@ public class WashHands : MonoBehaviour
         if (movedUpper == false)
         {
             Debug.Log("This happened");
-            upperHand.transform.position = new Vector2(upperHand.transform.position.x, handOffset);
+            upperHand.transform.position = new Vector2(upperHand.transform.position.x, initialUpper + handOffset);
             movedUpper = true;
         }
         else if(movedUpper == true)
         {
-            upperHand.transform.position = new Vector2(upperHand.transform.position.x, -handOffset);
+            upperHand.transform.position = new Vector2(upperHand.transform.position.x, initialUpper - handOffset);
             movedUpper = false;
         }
 
         if (movedLower == false)
         {
-            lowerHand.transform.position = new Vector2(lowerHand.transform.position.x, -handOffset);
+            lowerHand.transform.position = new Vector2(lowerHand.transform.position.x, initialLower - handOffset);
             movedLower = true;
         }
         else if (movedLower == true)
         {
-            lowerHand.transform.position = new Vector2(lowerHand.transform.position.x, handOffset);
+            lowerHand.transform.position = new Vector2(lowerHand.transform.position.x, initialLower + handOffset);
             movedLower = false;
         }
     }
