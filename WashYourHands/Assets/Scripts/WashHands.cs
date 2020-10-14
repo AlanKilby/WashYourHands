@@ -21,6 +21,8 @@ public class WashHands : MonoBehaviour
     private float initialUpper;
     private float initialLower;
 
+    public ParticleSystem bubbles;
+
     void Start()
     {
         initialUpper = upperHand.transform.position.y;
@@ -41,6 +43,7 @@ public class WashHands : MonoBehaviour
             timer -= Time.deltaTime;
             if (Input.anyKeyDown)
             {
+                bubbles.Play();
                 score++;
                 MoveHands();
             }
